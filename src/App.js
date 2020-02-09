@@ -1,11 +1,17 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Home";
 
 import "./App.css";
 
-function App() {
-  const imgSrc =
-    "https://images.unsplash.com/photo-1517816428104-797678c7cf0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
-  return <img src={imgSrc} alt='megaphone' />;
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <Home />;
+  }
 }
 
 export default App;
