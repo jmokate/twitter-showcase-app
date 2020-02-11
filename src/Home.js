@@ -1,41 +1,44 @@
 import React from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Button,
+  Row,
+  Col,
+  Image,
+  Navbar,
+  Nav
+} from "react-bootstrap";
 
 function Home() {
-  const homeIMG =
-    "https://images.unsplash.com/photo-1517816428104-797678c7cf0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
-
   return (
-    <Container className='btn-container'>
-      <Row>
-        <Col>
-          <Button variant='outline-primary' size='lg' className='home-btn'>
-            Home
-          </Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant='outline-primary' size='lg' className='search-btn'>
-            Search
-          </Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant='outline-primary' size='lg' className='random-btn'>
-            Random Tweets
-          </Button>
-        </Col>
-      </Row>
+    <div>
+      <Navbar collapseOnSelect variant='dark' bg='dark' expand='md'>
+        <Navbar.Brand className='twitter'>
+          Twitter API Displayer Thingy
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
+          <Nav>
+            <Nav.Link href='#home'>Home</Nav.Link>
+            <Nav.Link href='search'>Search Twitter</Nav.Link>
+            <Nav.Link href='random'>Random Twitter</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
 
-      <img
-        class='img-responsive'
-        className='homeIMG'
-        src={homeIMG}
-        alt='megaphone'
-      />
-    </Container>
+      <Col align='center'>
+        <h1>
+          Tweet Finder
+          <hr />
+        </h1>
+      </Col>
+
+      <div id='transparent'></div>
+
+      <Col align='center'>
+        <h4>Use this application to search Twitter or find random Tweets</h4>
+      </Col>
+    </div>
   );
 }
 
