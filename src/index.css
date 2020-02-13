@@ -13,14 +13,6 @@ body {
   text-align: center;
 }
 
-h1 {
-  padding-top: 50px;
-  color: #344;
-}
-h4 {
-  color: #344;
-}
-
 hr {
   width: 50%;
   color: #344;
@@ -29,4 +21,54 @@ hr {
 .search-bar {
   padding-top: 25px;
   width: 75% !important;
+  margin: 0 auto 0 auto;
+}
+
+.search-card {
+  width: 50%;
+  margin: 0 auto 0 auto;
+}
+
+.profile-pic {
+  float: left;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.user-display-name {
+  display: inline;
+
+  font-weight: bold;
+}
+
+.user-profile-handle {
+  display: inline;
+}
+
+.time-posted {
+  color: #aaa;
+}
+
+.full-tweet {
+  background: rgba(20, 29, 38, 0.7);
+  border-radius: 10px;
+  width: 75%;
+  margin: 0 auto 0 auto !important;
+}
+
+.tweet-header {
+}
+
+.tweet-body {
+  font-weight: 600;
+}
+
+.icons {
+  margin-left: 50px !important;
+}
+
+.icons,
+.tweet-header,
+.tweet-body {
+  color: whitesmoke;
 }

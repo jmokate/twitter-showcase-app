@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  Container,
-  Button,
-  Row,
-  Col,
-  Image,
-  Navbar,
-  Nav
-} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Home() {
   return (
     <div>
+      <br />
       <Col align='center'>
         <h1>
           Tweet Finder

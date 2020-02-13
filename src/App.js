@@ -1,10 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import Menu from "./Menu";
-import SearchTweets from "./SearchTweets";
-import RandomTweets from "./RandomTweets";
+import Home from "./Components/Home";
+import Menu from "./Components/Menu";
+import SearchTweets from "./Components/SearchTweets";
+import RandomTweets from "./Components/RandomTweets";
 
 class App extends React.Component {
   constructor(props) {
