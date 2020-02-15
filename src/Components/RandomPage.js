@@ -6,6 +6,18 @@ import RandomTweet from "./RandomTweet";
 class RandomPage extends React.Component {
   constructor() {
     super();
+    this.state = {
+      userClicked: "",
+      returnedTweet: [],
+      userImg: "",
+      userName: "",
+      userHandle: "",
+      datePosted: "",
+      tweetBody: "",
+      comments: 0,
+      retweets: 0,
+      likes: 0
+    };
   }
   render() {
     return (

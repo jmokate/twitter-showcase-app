@@ -10,11 +10,22 @@ import {
   Container,
   Row
 } from "react-bootstrap";
-import { FaComment, FaHeart, FaRetweet } from "react-icons/fa";
 
 class SearchTweets extends React.Component {
   constructor() {
     super();
+    this.state = {
+      searchedWord: "",
+      returnedTweets: [],
+      userImg: "",
+      userName: "",
+      userHandle: "",
+      datePosted: "",
+      tweetBody: "",
+      comments: 0,
+      retweets: 0,
+      likes: 0
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
