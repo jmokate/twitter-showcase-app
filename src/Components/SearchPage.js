@@ -24,6 +24,8 @@ class SearchTweets extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ displayTweet: !this.state.displayTweet });
+    console.log("changed");
   }
 
   handleChange() {
@@ -44,9 +46,7 @@ class SearchTweets extends React.Component {
               placeholder='search tweets'
             />
             <InputGroup.Append>
-              <Button variant='dark' handleSubmit={this.handleSubmit}>
-                Search
-              </Button>
+              <Button variant='dark'>Search</Button>
             </InputGroup.Append>
             {/* <Col></Col> */}
           </InputGroup>
