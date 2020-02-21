@@ -6,23 +6,17 @@ import Menu from "./Components/Menu";
 import SearchPage from "./Components/SearchPage";
 import RandomPage from "./Components/RandomPage";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Router>
-        <Menu />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/search' component={SearchPage} />
-          <Route path='/random' component={RandomPage} />
-        </Switch>
-      </Router>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <Menu />
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/search' component={SearchPage} />
+        <Route path='/random' component={RandomPage} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
+import { Image, Container, Col, Row } from "react-bootstrap";
 import { FaComment, FaHeart, FaRetweet } from "react-icons/fa";
 
 function RandomTweet(props) {

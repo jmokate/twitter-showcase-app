@@ -1,15 +1,6 @@
 import React from "react";
 import SearchTweet from "./SearchTweet";
-import {
-  Form,
-  Col,
-  InputGroup,
-  Button,
-  Card,
-  Image,
-  Container,
-  Row
-} from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 
 class SearchTweets extends React.Component {
   constructor() {
@@ -24,16 +15,16 @@ class SearchTweets extends React.Component {
       tweetBody: "",
       comments: 0,
       retweets: 0,
-      likes: 0
+      likes: 0,
+      displayTweet: false
     };
-    this.handleChange = this.handleChange.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {}
-
   handleSubmit(event) {
-    event.preventDefault();
+    this.setState({ displayTweet: !this.state.displayTweet });
+    console.log(this.state.displayTweet);
   }
 
   render() {
@@ -49,7 +40,9 @@ class SearchTweets extends React.Component {
               placeholder='search tweets'
             />
             <InputGroup.Append>
-              <Button variant='dark'>Search</Button>
+              <Button variant='dark' handleSubmit={this.handleSubmit}>
+                Search
+              </Button>
             </InputGroup.Append>
             {/* <Col></Col> */}
           </InputGroup>

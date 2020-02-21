@@ -8,29 +8,44 @@ class RandomPage extends React.Component {
     super(props);
     this.state = {
       userClicked: "",
-      returnedTweet: [
-        {
-          userImg:
-            "https://pbs.twimg.com/profile_images/875392068125769732/yrN-1k0Y_400x400.jpg",
-          userName: "The Onion",
-          userHandle: "theonion",
-          datePosted: "4h",
-          tweetBody: "this is just a test",
-          comments: 5,
-          retweets: 9,
-          likes: 55
-        }
-      ]
+      returnedTweet: [],
+      userImg:
+        "https://pbs.twimg.com/profile_images/875392068125769732/yrN-1k0Y_400x400.jpg",
+      userName: "The Onion",
+      userHandle: "theonion",
+      datePosted: "4h",
+      tweetBody: "this is just a test",
+      comments: 5,
+      retweets: 9,
+      likes: 55,
+      displayTweet: false
     };
-    this.generateRandomTweet = this.generateRandomTweet.bind(this);
+    this.toggleDisplayTweet = this.toggleDisplayTweet.bind(this);
   }
 
-  generateRandomTweet() {
-    console.log("cliked");
-    // const randomTweet =
+  toggleDisplayTweet() {
+    this.setState({ displayTweet: !this.state.displayTweet });
+    console.log(this.state.displayTweet);
   }
 
   render() {
+    let mapRandomTweet = null;
+
+    if (this.state.displayTweet) {
+      mapRandomTweet = (
+        <RandomTweet
+          userImg={this.state.userImg}
+          userName={this.state.userName}
+          userHandle={this.state.userHandle}
+          date={this.state.datePosted}
+          tweetBody={this.state.tweetBody}
+          comments={this.state.comments}
+          retweets={this.state.retweets}
+          likes={this.state.likes}
+        />
+      );
+    }
+
     return (
       <div>
         <br />
@@ -44,7 +59,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.generateRandomTweet()}
+            onClick={() => this.toggleDisplayTweet()}
           >
             <Card.Img
               variant='top'
@@ -56,7 +71,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.generateRandomTweet()}
+            onClick={() => this.toggleDisplayTweet()}
           >
             <Card.Img
               variant='top'
@@ -68,7 +83,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.generateRandomTweet()}
+            onClick={() => this.toggleDisplayTweet()}
           >
             <Card.Img
               variant='top'
@@ -80,7 +95,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.generateRandomTweet()}
+            onClick={() => this.toggleDisplayTweet()}
           >
             <Card.Img
               variant='top'
@@ -92,7 +107,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.generateRandomTweet()}
+            onClick={() => this.toggleDisplayTweet()}
           >
             <Card.Img
               variant='top'
@@ -103,17 +118,8 @@ class RandomPage extends React.Component {
         </CardGroup>
         <hr />
         <br />
-        {/* fake tweets below - also put info in object in returnedTweet array*/}
-        <RandomTweet
-          userImg={this.state.returnedTweet.userImg}
-          userName={this.state.returnedTweet.userName}
-          userHandle={this.state.returnedTweet.userHandle}
-          date={this.state.returnedTweet.datePosted}
-          tweetBody={this.state.returnedTweet.tweetBody}
-          comments={this.state.returnedTweet.comments}
-          retweets={this.state.returnedTweet.retweets}
-          likes={this.state.returnedTweet.likes}
-        />
+
+        {mapRandomTweet}
       </div>
     );
   }

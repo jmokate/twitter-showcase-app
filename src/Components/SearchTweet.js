@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Col,
-  InputGroup,
-  Button,
-  Card,
-  Image,
-  Container,
-  Row
-} from "react-bootstrap";
+import { Col, Image, Container, Row } from "react-bootstrap";
 import { FaComment, FaHeart, FaRetweet } from "react-icons/fa";
 
 function SearchTweet() {
