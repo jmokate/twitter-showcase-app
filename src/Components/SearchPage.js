@@ -18,13 +18,17 @@ class SearchTweets extends React.Component {
       likes: 0,
       displayTweet: false
     };
-
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  handleChange() {
     this.setState({ displayTweet: !this.state.displayTweet });
-    console.log(this.state.displayTweet);
+    console.log("changed");
   }
 
   render() {
