@@ -2,45 +2,39 @@ import React from "react";
 import { Col, Image, Container, Row } from "react-bootstrap";
 import { FaComment, FaHeart, FaRetweet } from "react-icons/fa";
 
-function SearchTweet() {
+function SearchTweet(props) {
   return (
     <div>
       <Container className='full-tweet'>
         <br />
-        <Image
-          className='profile-pic'
-          src='https://images.unsplash.com/photo-1542260151-26fd0558f5f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-        />
+        <Image className='profile-pic' src={props.userImg} />
         <Row>
           <Col xs={10} className='tweet-header'>
-            <span className='user-display-name'>Profile Name </span>
-            <span className='user-profile-handle'>@Sample</span>
-            <span className='time-posted'> | 7h</span>
+            <span className='user-display-name'>{props.userName} </span>
+            <span className='user-profile-handle'>@{props.userHandle}</span>
+            <span className='time-posted'> | {props.datePosted}</span>
           </Col>
         </Row>
         <Row>
           <Col xs={11} className='tweet-body'>
-            <span>
-              Tweet body goes here! keep on bloody typing just to see what we
-              get oh my god ok can't stop this just a sample oh babybaby
-            </span>
+            <span>{props.tweetBody}</span>
           </Col>
         </Row>
         <br />
         <Row className='icons'>
           <Col xs={2}>
             <span>
-              <FaComment /> 5
+              <FaComment /> {props.comments}
             </span>
           </Col>
           <Col xs={2}>
             <span>
-              <FaRetweet /> 9
+              <FaRetweet /> {props.retweets}
             </span>
           </Col>
           <Col xs={2}>
             <span>
-              <FaHeart /> 55
+              <FaHeart /> {props.likes}
             </span>
           </Col>
         </Row>

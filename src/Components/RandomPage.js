@@ -29,10 +29,10 @@ class RandomPage extends React.Component {
   }
 
   render() {
-    let mapRandomTweet = null;
+    let displayRandomTweet = null;
 
     if (this.state.displayTweet) {
-      mapRandomTweet = (
+      displayRandomTweet = (
         <RandomTweet
           userImg={this.state.userImg}
           userName={this.state.userName}
@@ -87,7 +87,7 @@ class RandomPage extends React.Component {
           >
             <Card.Img
               variant='top'
-              src='https://pbs.twimg.com/profile_images/1216015585399705601/Hs-9iDoo_400x400.jpg'
+              src='https://pbs.twimg.com/profile_images/1231217224742002691/f7K2X27D_400x400.jpg'
             />
             <Card.Title align='center'>Chicago Bulls</Card.Title>
           </Card>
@@ -119,7 +119,7 @@ class RandomPage extends React.Component {
         <hr />
         <br />
 
-        {mapRandomTweet}
+        {displayRandomTweet}
       </div>
     );
   }
