@@ -6,4 +6,4 @@ app.use(express.static("Client"));
 
 app.get("/", (req, res) => res.send("hello world"));
 
-app.listen(port, () => console.log(`example app is listening on port ${port}`));
+app.listen(port, () => console.log(`example app is lisn port ${port}`));
