@@ -4,11 +4,7 @@
   "description": "twitter showcase app",
   "main": "server.js",
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "react-icons": "^3.9.0",
-    "react-router-dom": "^5.1.2"
+    "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
