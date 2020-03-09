@@ -9,29 +9,6 @@ app.use(express.static(path.join(__dirname, "client/index.html")));
 
 app.use("/client", express.static("client"));
 
-// app.post("/api/client", (req, res) => {
-//   res.send();
-// });
-
-// app.post("/api/client", (req, res) => {
-//   const config = {
-//     auth: {
-//       username: "QfBqPxQTfoJxzvu2VNHZX7SBY",
-//       password: "qsTipLXWEZJputrqUalA7BXGyCRpYdKVICrYs79ivM3VJo7SJI"
-//     }
-//   };
-
-//   axios
-//     .post("https://api.twitter.com/oauth2/token", config)
-//     .then(response => {
-//       res.send(response.data);
-//       console.log(response.data);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// });
-
 app.get("/api/client", (req, res) => {
   //get bearer token from twitter w. post
 
@@ -48,22 +25,23 @@ app.get("/api/client", (req, res) => {
   axios
     .post("https://api.twitter.com/oauth2/token", grantType, config)
     .then(response => {
-      console.log(response.data);
+      console.log(response);
+      const token = response.data;
     })
     .catch(error => {
       console.log(error);
     });
 
-  axios
-    .get("https://api.twitter.com/1.1/search/tweets.json")
-    .then(response => {
-      res.send(response.data);
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(error);
-      res.sendStatus(500);
-    });
+  // axios
+  //   .get("https://api.twitter.com/1.1/search/tweets.json")
+  //   .then(response => {
+  //     res.send(response.data);
+  //     console.log(response.data);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //     res.sendStatus(500);
+  //   });
 });
 
 app.listen(port, () => console.log(`example app is listening port ${port}`));
