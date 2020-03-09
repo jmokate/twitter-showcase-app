@@ -32,26 +32,22 @@ app.use("/client", express.static("client"));
 //     });
 // });
 
-const config = {
-  auth: {
-    username: "QfBqPxQTfoJxzvu2VNHZX7SBY",
-    password: "qsTipLXWEZJputrqUalA7BXGyCRpYdKVICrYs79ivM3VJo7SJI"
-  }
-};
-
 app.get("/api/client", (req, res) => {
   //get bearer token from twitter w. post
+
   const config = {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     auth: {
       username: "QfBqPxQTfoJxzvu2VNHZX7SBY",
       password: "qsTipLXWEZJputrqUalA7BXGyCRpYdKVICrYs79ivM3VJo7SJI"
     }
   };
 
+  const grantType = "grant_type=client_credentials";
+
   axios
-    .post("https://api.twitter.com/oauth2/token", config)
+    .post("https://api.twitter.com/oauth2/token", grantType, config)
     .then(response => {
-      res.send(response.data);
       console.log(response.data);
     })
     .catch(error => {
