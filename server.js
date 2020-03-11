@@ -23,7 +23,7 @@ app.get("/api/client", (req, res) => {
 
   axios
     .get(
-      "https://api.twitter.com/1.1/search/tweets.json?q=nasa&result_type=popular",
+      "https://api.twitter.com/1.1/search/tweets.json?q=normmacdonald&result_type=mixed",
       config
     )
     .then(response => {
