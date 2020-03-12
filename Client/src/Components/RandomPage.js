@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardGroup, Col, Row } from "react-bootstrap";
+import axios from "axios";
 
 import RandomTweet from "./RandomTweet";
 
@@ -21,12 +22,24 @@ class RandomPage extends React.Component {
       displayTweet: false
     };
     this.toggleDisplayTweet = this.toggleDisplayTweet.bind(this);
+    this.getRandomTweetFromServer = this.getRandomTweetFromServer.bind(this);
   }
 
   toggleDisplayTweet() {
     this.setState({ displayTweet: !this.state.displayTweet });
     console.log(this.state.displayTweet);
   }
+
+  getRandomTweetFromServer = () => {
+    axios
+      .get("api/random")
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   render() {
     let displayRandomTweet = null;
@@ -60,6 +73,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             onClick={() => this.toggleDisplayTweet()}
+            onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
               variant='top'
@@ -72,6 +86,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             onClick={() => this.toggleDisplayTweet()}
+            onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
               variant='top'
@@ -84,6 +99,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             onClick={() => this.toggleDisplayTweet()}
+            onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
               variant='top'
@@ -96,6 +112,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             onClick={() => this.toggleDisplayTweet()}
+            onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
               variant='top'
@@ -108,6 +125,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             onClick={() => this.toggleDisplayTweet()}
+            onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
               variant='top'

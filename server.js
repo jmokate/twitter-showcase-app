@@ -10,6 +10,10 @@ app.use(express.static(path.join(__dirname, "client/index.html")));
 
 app.use("/client", express.static("client"));
 
+app.get("/api/random", (req, res) => {
+  res.send("hello man");
+});
+
 app.get("/api/client", (req, res) => {
   //get bearer token from twitter w. post
 
