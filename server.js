@@ -19,7 +19,8 @@ app.get("/api/random/:userName", (req, res) => {
 
 app.get("/api/client/", (req, res) => {
   //get bearer token from twitter w. post
-  const userName = req.query.userName;
+  const user = req.query.user;
+  console.log(user);
 
   const token = process.env.SECRET_KEY;
 
