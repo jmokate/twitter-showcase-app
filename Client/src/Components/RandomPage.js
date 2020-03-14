@@ -8,33 +8,41 @@ class RandomPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userClicked: "",
+      name: "",
       returnedTweet: [],
       userImg:
         "https://pbs.twimg.com/profile_images/875392068125769732/yrN-1k0Y_400x400.jpg",
       userName: "The Onion",
       userHandle: "theonion",
       datePosted: "4h",
-      tweetBody: "this is just a test",
+      tweetBody: "",
       comments: 5,
       retweets: 9,
       likes: 55,
-      displayTweet: false
+      displayTweet: true
     };
-    this.toggleDisplayTweet = this.toggleDisplayTweet.bind(this);
+    // this.toggleDisplayTweet = this.toggleDisplayTweet.bind(this);
     this.getRandomTweetFromServer = this.getRandomTweetFromServer.bind(this);
   }
 
-  toggleDisplayTweet() {
-    this.setState({ displayTweet: !this.state.displayTweet });
-    console.log(this.state.displayTweet);
-  }
+  // toggleDisplayTweet() {
+  //   this.setState({ displayTweet: !this.state.displayTweet });
+  //   console.log(this.state.displayTweet);
+  // }
+  handleSelectedUser = e => {
+    const user = e.target.name;
+    console.log(user);
+    this.getRandomTweetFromServer(user);
+  };
 
-  getRandomTweetFromServer = () => {
+  getRandomTweetFromServer = user => {
+    //const userName = "NormMacdonald";
     axios
-      .get("api/random")
+      .get(`api/client?q=${user}`)
       .then(response => {
-        console.log(response);
+        console.log(response.data);
+        const text = response.data.statuses.text;
+        this.setState({ tweetBody: text });
       })
       .catch(error => {
         console.log(error);
@@ -51,7 +59,7 @@ class RandomPage extends React.Component {
           userName={this.state.userName}
           userHandle={this.state.userHandle}
           date={this.state.datePosted}
-          tweetBody={this.state.tweetBody}
+          tweetBody={this.state.text}
           comments={this.state.comments}
           retweets={this.state.retweets}
           likes={this.state.likes}
@@ -72,8 +80,9 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.toggleDisplayTweet()}
-            onClick={() => this.getRandomTweetFromServer()}
+            name='TheOnion'
+            //onClick={() => this.toggleDisplayTweet()}
+            onClick={this.handleSelectedUser}
           >
             <Card.Img
               variant='top'
@@ -85,7 +94,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.toggleDisplayTweet()}
+            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
@@ -98,7 +107,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.toggleDisplayTweet()}
+            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
@@ -111,7 +120,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.toggleDisplayTweet()}
+            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
@@ -124,7 +133,7 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            onClick={() => this.toggleDisplayTweet()}
+            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.getRandomTweetFromServer()}
           >
             <Card.Img
@@ -136,6 +145,16 @@ class RandomPage extends React.Component {
         </CardGroup>
         <hr />
         <br />
+        <RandomTweet
+          userImg={this.state.userImg}
+          userName={this.state.userName}
+          userHandle={this.state.userHandle}
+          date={this.state.datePosted}
+          tweetBody={this.state.text}
+          comments={this.state.comments}
+          retweets={this.state.retweets}
+          likes={this.state.likes}
+        />
 
         {displayRandomTweet}
       </div>
