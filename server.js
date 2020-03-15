@@ -17,10 +17,10 @@ app.get("/api/random/:userName", (req, res) => {
   console.log(req.query.userName);
 });
 
-app.get("/api/client/", (req, res) => {
+app.get("/api/client", async (req, res) => {
   //get bearer token from twitter w. post
-  const user = req.query.user;
-  console.log(user);
+  const user = JSON.stringify(req.query);
+  console.log("user is" + user);
 
   const token = process.env.SECRET_KEY;
 
@@ -30,7 +30,7 @@ app.get("/api/client/", (req, res) => {
     }
   };
 
-  axios
+  await axios
     .get(
       `https://api.twitter.com/1.1/search/tweets.json?q=${user}&result_type=mixed`,
       config

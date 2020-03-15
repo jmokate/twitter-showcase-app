@@ -29,20 +29,21 @@ class RandomPage extends React.Component {
   //   this.setState({ displayTweet: !this.state.displayTweet });
   //   console.log(this.state.displayTweet);
   // }
-  handleSelectedUser = e => {
-    const user = e.target.name;
+
+  handleSelectedUser = user => {
     console.log(user);
     this.getRandomTweetFromServer(user);
   };
 
-  getRandomTweetFromServer = user => {
+  getRandomTweetFromServer = async user => {
     //const userName = "NormMacdonald";
-    axios
+    console.log(user);
+    await axios
       .get(`api/client?q=${user}`)
       .then(response => {
-        console.log(response.data);
-        const text = response.data.statuses.text;
-        this.setState({ tweetBody: text });
+        console.log(response);
+        // const text = response.data.statuses.text;
+        // this.setState({ tweetBody: text });
       })
       .catch(error => {
         console.log(error);
@@ -82,7 +83,7 @@ class RandomPage extends React.Component {
             border='light'
             name='TheOnion'
             //onClick={() => this.toggleDisplayTweet()}
-            onClick={this.handleSelectedUser}
+            onClick={() => this.handleSelectedUser("TheOnion")}
           >
             <Card.Img
               variant='top'
@@ -95,7 +96,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             //onClick={() => this.toggleDisplayTweet()}
-            onClick={() => this.getRandomTweetFromServer()}
+            onClick={() => this.handleSelectedUser("NPR")}
           >
             <Card.Img
               variant='top'
@@ -108,7 +109,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             //onClick={() => this.toggleDisplayTweet()}
-            onClick={() => this.getRandomTweetFromServer()}
+            onClick={() => this.handleSelectedUser("chicagobulls")}
           >
             <Card.Img
               variant='top'
@@ -121,7 +122,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             //onClick={() => this.toggleDisplayTweet()}
-            onClick={() => this.getRandomTweetFromServer()}
+            onClick={() => this.handleSelectedUser("normmacdonald")}
           >
             <Card.Img
               variant='top'
@@ -134,7 +135,7 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             //onClick={() => this.toggleDisplayTweet()}
-            onClick={() => this.getRandomTweetFromServer()}
+            onClick={() => this.handleSelectedUser("TheCryptoDog")}
           >
             <Card.Img
               variant='top'
