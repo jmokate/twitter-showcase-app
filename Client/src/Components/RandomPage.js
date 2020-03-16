@@ -36,12 +36,16 @@ class RandomPage extends React.Component {
   };
 
   getRandomTweetFromServer = async user => {
-    //const userName = "NormMacdonald";
     console.log(user);
+
     await axios
-      .get(`api/client?q=${user}`)
+      .get(`/api/random?screen_name=${user}`)
       .then(response => {
         console.log(response);
+        const statusArray = response.data.statuses;
+        const randomTweet =
+          statusArray[Math.floor(Math.random() * statusArray.length)];
+        console.log(randomTweet);
         // const text = response.data.statuses.text;
         // this.setState({ tweetBody: text });
       })
@@ -101,6 +105,7 @@ class RandomPage extends React.Component {
             <Card.Img
               variant='top'
               src='https://pbs.twimg.com/profile_images/1208165423109292032/_oEEIsvx_400x400.jpg'
+              alt='The Onion Logo'
             />
             <Card.Title align='center'>NPR</Card.Title>
           </Card>
@@ -113,7 +118,8 @@ class RandomPage extends React.Component {
           >
             <Card.Img
               variant='top'
-              src='https://pbs.twimg.com/profile_images/1231217224742002691/f7K2X27D_400x400.jpg'
+              src='https://pbs.twimg.com/profile_images/1236410969389137920/k0q41K2t_400x400.jpg'
+              alt='Chicago Bulls Logo'
             />
             <Card.Title align='center'>Chicago Bulls</Card.Title>
           </Card>
@@ -127,6 +133,7 @@ class RandomPage extends React.Component {
             <Card.Img
               variant='top'
               src='https://pbs.twimg.com/profile_images/1281990037/Unknown_400x400.jpeg'
+              alt='Norm Macdonald Logo'
             />
             <Card.Title align='center'>Norm Macdonald</Card.Title>
           </Card>
@@ -140,6 +147,7 @@ class RandomPage extends React.Component {
             <Card.Img
               variant='top'
               src='https://pbs.twimg.com/profile_images/1212786806325821440/reFtNK23.png'
+              alt='The Crypto Dog Logo'
             />
             <Card.Title align='center'>Crypto Dog</Card.Title>
           </Card>
