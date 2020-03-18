@@ -11,9 +11,7 @@ app.use(express.static(path.join(__dirname, "client/index.html")));
 app.use("/client", express.static("client"));
 
 app.get("/api/random", async (req, res) => {
-  //const user = JSON.stringify(req.query.screen_name);
   const user = req.query.screen_name;
-  console.log("random search user is " + user);
 
   const token = process.env.SECRET_KEY;
 

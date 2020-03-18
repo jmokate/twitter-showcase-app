@@ -18,14 +18,7 @@ class RandomPage extends React.Component {
       retweets: null,
       likes: null
     };
-    // this.toggleDisplayTweet = this.toggleDisplayTweet.bind(this);
-    this.getRandomTweetFromServer = this.getRandomTweetFromServer.bind(this);
   }
-
-  // toggleDisplayTweet() {
-  //   this.setState({ displayTweet: !this.state.displayTweet });
-  //   console.log(this.state.displayTweet);
-  // }
 
   handleSelectedUser = user => {
     console.log(user);
@@ -42,7 +35,6 @@ class RandomPage extends React.Component {
         const statusArray = response.data;
         const randomTweet =
           statusArray[Math.floor(Math.random() * statusArray.length)];
-        console.log(randomTweet);
         const userImg = randomTweet.user.profile_image_url;
         const tweetBody = randomTweet.text;
         const datePosted = randomTweet.created_at;
@@ -52,7 +44,6 @@ class RandomPage extends React.Component {
         const likes = randomTweet.favorite_count;
         console.log(tweetBody);
 
-        console.log(userImg);
         this.setState({
           displayTweet: true,
           userImg: userImg,
@@ -94,6 +85,7 @@ class RandomPage extends React.Component {
         <Row>
           <Col align='center'>
             <h2>Click a user below and view some random Tweets!</h2>
+            <br />
           </Col>
         </Row>
         <CardGroup>
@@ -102,7 +94,6 @@ class RandomPage extends React.Component {
             text='light'
             border='light'
             name='TheOnion'
-            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.handleSelectedUser("TheOnion")}
           >
             <Card.Img
@@ -115,7 +106,6 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.handleSelectedUser("NPR")}
           >
             <Card.Img
@@ -129,7 +119,6 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.handleSelectedUser("chicagobulls")}
           >
             <Card.Img
@@ -143,7 +132,6 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.handleSelectedUser("normmacdonald")}
           >
             <Card.Img
@@ -157,7 +145,6 @@ class RandomPage extends React.Component {
             bg='dark'
             text='light'
             border='light'
-            //onClick={() => this.toggleDisplayTweet()}
             onClick={() => this.handleSelectedUser("TheCryptoDog")}
           >
             <Card.Img
@@ -170,15 +157,6 @@ class RandomPage extends React.Component {
         </CardGroup>
         <hr />
         <br />
-        {/* <RandomTweet
-          userImg={this.state.userImg}
-          userName={this.state.userName}
-          userHandle={this.state.userHandle}
-          date={this.state.datePosted}
-          tweetBody={this.state.tweetBody}
-          retweets={this.state.retweets}
-          likes={this.state.likes}
-        /> */}
 
         {displayRandomTweet}
       </div>
