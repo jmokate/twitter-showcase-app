@@ -11,7 +11,9 @@ app.use(express.static(path.join(__dirname, "client/index.html")));
 app.use("/client", express.static("client"));
 
 app.get("/api/random", async (req, res) => {
-  const user = JSON.stringify(req.query.screen_name);
+  //const user = JSON.stringify(req.query.screen_name);
+  const user = req.query.screen_name;
+  console.log("random search user is " + user);
 
   const token = process.env.SECRET_KEY;
 
@@ -27,7 +29,7 @@ app.get("/api/random", async (req, res) => {
       config
     )
     .then(response => {
-      res.send(response);
+      res.send(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -38,10 +40,11 @@ app.get("/api/random", async (req, res) => {
 
 app.get("/api/client", async (req, res) => {
   //get bearer token from twitter w. post
-  const user = JSON.stringify(req.query);
+  //const user = JSON.stringify(req.query);
+  user = req.query;
   console.log("user is" + user);
 
-  const token = process.env.SECRET_KEY;
+  //const token = process.env.SECRET_KEY;
 
   const config = {
     headers: {
@@ -50,10 +53,7 @@ app.get("/api/client", async (req, res) => {
   };
 
   await axios
-    .get(
-      `https://api.twitter.com/1.1/search/tweets.json?q=from&${user}`,
-      config
-    )
+    .get(`https://api.twitter.com/1.1/search/tweets.json?q=@${user}`, config)
     // await axios
     //   .get(
     //     `https://api.twitter.com/1.1/users/show.json?screen_name=${user}`,
