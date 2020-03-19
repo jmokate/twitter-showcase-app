@@ -6,12 +6,9 @@ const axios = require("axios");
 require("dotenv").config();
 
 // serve the static files from react app
-app.use(express.static(path.join(__dirname, "client/index.html")));
-
-app.use("/client", express.static("client"));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 //GETS search results
-
 app.get("/api/random", async (req, res) => {
   const user = req.query.screen_name;
 
@@ -38,7 +35,6 @@ app.get("/api/random", async (req, res) => {
 });
 
 //GETS random tweets from top 5 users.
-
 app.get("/api/search", async (req, res) => {
   search = req.query.q;
 
@@ -63,6 +59,10 @@ app.get("/api/search", async (req, res) => {
       console.log(error);
       res.sendStatus(500);
     });
+});
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 app.listen(port, () => console.log(`listening port ${port}`));

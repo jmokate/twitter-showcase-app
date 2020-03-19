@@ -18,6 +18,7 @@
     "react-scripts": "3.3.1"
   },
   "scripts": {
+    "watch": "cra-build-watch",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,7 +42,9 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "cra-build-watch": "^3.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmokate/twitter-showcase-app.git"

@@ -19,7 +19,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run watch --prefix client\"",
     "build": "react-scripts build && nodemon server"
   },
   "proxy": "http://localhost:3000",
