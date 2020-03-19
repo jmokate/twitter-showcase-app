@@ -33,6 +33,7 @@ app.get("/api/random", async (req, res) => {
     })
     .catch(error => {
       console.log(error);
+      res.sendStatus(500);
     });
 });
 
@@ -40,7 +41,6 @@ app.get("/api/random", async (req, res) => {
 
 app.get("/api/search", async (req, res) => {
   search = req.query.q;
-  console.log("search is" + search);
 
   const token = process.env.SECRET_KEY;
 
@@ -58,7 +58,6 @@ app.get("/api/search", async (req, res) => {
 
     .then(response => {
       res.send(response.data);
-      console.log(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -66,4 +65,4 @@ app.get("/api/search", async (req, res) => {
     });
 });
 
-app.listen(port, () => console.log(`example app is listening port ${port}`));
+app.listen(port, () => console.log(`listening port ${port}`));

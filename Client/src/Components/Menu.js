@@ -1,11 +1,12 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { FaTwitter } from "react-icons/fa";
 
 function Menu() {
   return (
     <Navbar collapseOnSelect variant='dark' bg='dark' expand='md'>
       <Navbar.Brand className='twitter'>
-        Twitter API Displayer Thingy
+        <FaTwitter size='3em' color='rgb(255, 113, 35)' />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>

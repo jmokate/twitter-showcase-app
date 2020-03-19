@@ -15,7 +15,13 @@ body {
 
 hr {
   width: 50%;
-  color: #344;
+  color: #292b2c;
+}
+
+.text {
+  color: #292b2c;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .search-bar {
@@ -50,13 +56,10 @@ hr {
 }
 
 .full-tweet {
-  background: rgba(20, 29, 38, 0.7);
+  background: rgba(41, 43, 44, 0.7);
   border-radius: 10px;
   width: 75%;
   margin: 0 auto 0 auto !important;
-}
-
-.tweet-header {
 }
 
 .tweet-body {

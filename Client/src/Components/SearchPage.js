@@ -24,10 +24,8 @@ class SearchTweets extends React.Component {
     await axios
       .get(`/api/search?q=${search}`)
       .then(response => {
-        console.log(response.data);
         const searchResults = response.data.statuses;
         this.setState({ returnedTweets: searchResults });
-        console.log(this.state.returnedTweets);
       })
       .catch(error => {
         console.log(error);
@@ -61,7 +59,9 @@ class SearchTweets extends React.Component {
       <div>
         <br />
         <Col align='center'>
-          <h3>Search for popular and recent tweets from the past 7 days</h3>
+          <h4 className='text'>
+            Search for popular and recent tweets from the past 7 days
+          </h4>
         </Col>
         <Form onSubmit={this.handleSubmit}>
           <InputGroup className='search-bar'>
@@ -81,7 +81,7 @@ class SearchTweets extends React.Component {
           </InputGroup>
         </Form>
         <br />
-        <hr />
+        <br />
         {displaySearchedTweets}
       </div>
     );

@@ -21,17 +21,13 @@ class RandomPage extends React.Component {
   }
 
   handleSelectedUser = user => {
-    console.log(user);
     this.getRandomTweetFromServer(user);
   };
 
   getRandomTweetFromServer = async user => {
-    console.log(user);
-
     await axios
       .get(`/api/random?screen_name=${user}`)
       .then(response => {
-        console.log(response);
         const statusArray = response.data;
         const randomTweet =
           statusArray[Math.floor(Math.random() * statusArray.length)];
@@ -42,7 +38,6 @@ class RandomPage extends React.Component {
         const userHandle = randomTweet.user.screen_name;
         const retweets = randomTweet.retweet_count;
         const likes = randomTweet.favorite_count;
-        console.log(tweetBody);
 
         this.setState({
           displayTweet: true,
@@ -71,7 +66,7 @@ class RandomPage extends React.Component {
           userImg={this.state.userImg}
           userName={this.state.userName}
           userHandle={this.state.userHandle}
-          date={this.state.datePosted}
+          datePosted={this.state.datePosted}
           tweetBody={this.state.tweetBody}
           retweets={this.state.retweets}
           likes={this.state.likes}
@@ -84,7 +79,9 @@ class RandomPage extends React.Component {
         <br />
         <Row>
           <Col align='center'>
-            <h2>Click a user below and view some random Tweets!</h2>
+            <h3 className='text'>
+              Click a user below and view some random Tweets!
+            </h3>
             <br />
           </Col>
         </Row>
@@ -155,7 +152,7 @@ class RandomPage extends React.Component {
             <Card.Title align='center'>Crypto Dog</Card.Title>
           </Card>
         </CardGroup>
-        <hr />
+        <br />
         <br />
 
         {displayRandomTweet}

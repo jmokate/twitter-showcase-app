@@ -6,8 +6,8 @@ function Home() {
     <div>
       <br />
       <Col align='center'>
-        <h1>
-          Tweet Finder
+        <h1 className='text'>
+          Twitter API Application
           <hr />
         </h1>
       </Col>
@@ -15,7 +15,10 @@ function Home() {
       <div id='transparent'></div>
 
       <Col align='center'>
-        <h4>Use this application to search Twitter or find random Tweets</h4>
+        <h4 className='text'>
+          Use this app to search Twitter or find random tweets from some of my
+          favorite users.
+        </h4>
       </Col>
     </div>
   );
