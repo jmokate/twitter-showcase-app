@@ -10,6 +10,8 @@ app.use(express.static(path.join(__dirname, "client/index.html")));
 
 app.use("/client", express.static("client"));
 
+//GETS search results
+
 app.get("/api/random", async (req, res) => {
   const user = req.query.screen_name;
 
@@ -36,13 +38,11 @@ app.get("/api/random", async (req, res) => {
 
 //GETS random tweets from top 5 users.
 
-app.get("/api/client", async (req, res) => {
-  //get bearer token from twitter w. post
-  //const user = JSON.stringify(req.query);
-  user = req.query;
-  console.log("user is" + user);
+app.get("/api/search", async (req, res) => {
+  search = req.query.q;
+  console.log("search is" + search);
 
-  //const token = process.env.SECRET_KEY;
+  const token = process.env.SECRET_KEY;
 
   const config = {
     headers: {
@@ -51,12 +51,11 @@ app.get("/api/client", async (req, res) => {
   };
 
   await axios
-    .get(`https://api.twitter.com/1.1/search/tweets.json?q=@${user}`, config)
-    // await axios
-    //   .get(
-    //     `https://api.twitter.com/1.1/users/show.json?screen_name=${user}`,
-    //     config
-    //   )
+    .get(
+      `https://api.twitter.com/1.1/search/tweets.json?q=${search}&result_type=mixed`,
+      config
+    )
+
     .then(response => {
       res.send(response.data);
       console.log(response.data);

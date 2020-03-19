@@ -1,60 +1,68 @@
 import React from "react";
 import SearchTweet from "./SearchTweet";
-import { Form, InputGroup, Button } from "react-bootstrap";
+import { Col, Form, InputGroup, Button } from "react-bootstrap";
+import axios from "axios";
 
 class SearchTweets extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formInput: "",
-      searchedWord: "",
       returnedTweets: [],
-      userImg:
-        "https://images.unsplash.com/photo-1542260151-26fd0558f5f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-      userName: "test person",
-      userHandle: "funtest",
-      datePosted: "3h",
-      tweetBody: "omg this is such a test, check me out!",
-      comments: 3,
-      retweets: 5,
-      likes: 99,
-      displayTweet: false
+      displayTweet: false,
+      formInput: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ formInput: event.target.value });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = async event => {
     event.preventDefault();
+    const search = this.state.formInput;
+
+    await axios
+      .get(`/api/search?q=${search}`)
+      .then(response => {
+        console.log(response.data);
+        const searchResults = response.data.statuses;
+        this.setState({ returnedTweets: searchResults });
+        console.log(this.state.returnedTweets);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     this.setState({
-      displayTweet: !this.state.displayTweet,
+      displayTweet: true,
       formInput: ""
     });
-    console.log(this.state.displayTweet);
-  }
+  };
 
   render() {
-    let displaySearchedTweet;
-    if (this.state.displayTweet) {
-      displaySearchedTweet = (
+    let displayTweet = this.state.displayTweet;
+    let displaySearchedTweets;
+    const returnedTweets = this.state.returnedTweets;
+
+    if (displayTweet) {
+      displaySearchedTweets = returnedTweets.map(tweet => (
         <SearchTweet
-          userImg={this.state.userImg}
-          userName={this.state.userName}
-          userHandle={this.state.userHandle}
-          datePosted={this.state.datePosted}
-          tweetBody={this.state.tweetBody}
-          comments={this.state.comments}
-          retweets={this.state.retweets}
-          likes={this.state.likes}
+          key={tweet.id}
+          userImg={tweet.user.profile_image_url}
+          userName={tweet.user.name}
+          userHandle={tweet.user.screen_name}
+          datePosted={tweet.created_at}
+          tweetBody={tweet.text}
+          retweets={tweet.retweet_count}
+          likes={tweet.favorite_count}
         />
-      );
+      ));
     }
     return (
       <div>
+        <br />
+        <Col align='center'>
+          <h3>Search for popular and recent tweets from the past 7 days</h3>
+        </Col>
         <Form onSubmit={this.handleSubmit}>
           <InputGroup className='search-bar'>
             <Form.Control
@@ -74,7 +82,7 @@ class SearchTweets extends React.Component {
         </Form>
         <br />
         <hr />
-        {displaySearchedTweet}
+        {displaySearchedTweets}
       </div>
     );
   }
