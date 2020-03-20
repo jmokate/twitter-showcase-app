@@ -27,6 +27,7 @@
     "build": "react-scripts build && nodemon server",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
   },
+  "proxy": "http://localhost:3000",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmokate/twitter-showcase-app.git"
