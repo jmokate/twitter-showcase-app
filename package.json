@@ -12,9 +12,7 @@
     "cra-build-watch": "^3.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "safe-json-stringify": "^1.2.0",
-    "concurrently": "^5.1.0",
-    "nodemon": "^2.0.2"
+    "safe-json-stringify": "^1.2.0"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
@@ -26,9 +24,9 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run watch --prefix client\"",
-    "build": "react-scripts build && nodemon server"
+    "build": "react-scripts build && nodemon server",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "proxy": "http://localhost:3000",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmokate/twitter-showcase-app.git"
