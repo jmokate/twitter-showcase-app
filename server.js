@@ -6,7 +6,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 // serve the static files from react app
-app.use(express.static(path.join(__dirname, "Client/build")));
+app.use("/static", express.static(path.join(__dirname, "Client/build")));
 
 //GETS search results
 app.get("/api/random", async (req, res) => {
