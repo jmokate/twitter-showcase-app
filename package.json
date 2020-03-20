@@ -4,7 +4,7 @@
   "description": "twitter showcase app",
   "main": "server.js",
   "engines": {
-    "node": "^12.16.1"
+    "node": "12.16.1"
   },
   "dependencies": {
     "axios": "^0.19.2",
