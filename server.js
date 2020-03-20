@@ -6,7 +6,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 // serve the static files from react app
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "Client/build")));
 
 //GETS search results
 app.get("/api/random", async (req, res) => {
@@ -62,7 +62,7 @@ app.get("/api/search", async (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "Client", "build", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`listening port ${PORT}`));
