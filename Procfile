@@ -1,4 +1,4 @@
-web: node run start
+web: node server.js
 
 
 
