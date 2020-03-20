@@ -1,4 +1,4 @@
-web: npm nuild
+web: npm run build
 
 
 
