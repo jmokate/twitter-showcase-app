@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import Menu from "./Components/Menu";
 import SearchPage from "./Components/SearchPage";
 import RandomPage from "./Components/RandomPage";
+import "./index.css";
 
 function App() {
   return (
