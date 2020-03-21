@@ -42,6 +42,7 @@ hr {
   border-radius: 50%;
 }
 .user-display-name {
+  margin-right: auto;
   display: inline;
   font-weight: bold;
 }
