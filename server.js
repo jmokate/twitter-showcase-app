@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const axios = require("axios");
+const getToken = require("./getToken");
 require("dotenv").config();
 
 // serve the static files from react app
@@ -10,9 +11,11 @@ app.use(express.static(path.join(__dirname, "Client/build")));
 
 //GETS search results
 app.get("/api/random", async (req, res) => {
+  const token = await getToken.getToken();
+
   const user = req.query.screen_name;
 
-  const token = process.env.SECRET_KEY;
+  // const token = process.env.SECRET_KEY;
 
   const config = {
     headers: {
@@ -36,9 +39,8 @@ app.get("/api/random", async (req, res) => {
 
 //GETS random tweets from top 5 users.
 app.get("/api/search", async (req, res) => {
+  const token = await getToken.getToken();
   search = req.query.q;
-
-  const token = process.env.SECRET_KEY;
 
   const config = {
     headers: {
