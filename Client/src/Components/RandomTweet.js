@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Container, Col, Row } from "react-bootstrap";
 import { FaHeart, FaRetweet } from "react-icons/fa";
 import moment from "moment";
+import "./index.css";
 
 function RandomTweet(props) {
   const date = props.datePosted;
