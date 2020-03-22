@@ -93,10 +93,7 @@ class RandomPage extends React.Component {
             name='TheOnion'
             onClick={() => this.handleSelectedUser("TheOnion")}
           >
-            <Card.Img
-              variant='top'
-              src='https://pbs.twimg.com/profile_images/875392068125769732/yrN-1k0Y_400x400.jpg'
-            />
+            <Card.Img variant='top' src='../ProfileImages/onion.jpg' />
             <Card.Title align='center'>The Onion</Card.Title>
           </Card>
           <Card
@@ -108,7 +105,7 @@ class RandomPage extends React.Component {
             <Card.Img
               variant='top'
               src='https://pbs.twimg.com/profile_images/1208165423109292032/_oEEIsvx_400x400.jpg'
-              alt='The Onion Logo'
+              alt='NPR Logo'
             />
             <Card.Title align='center'>NPR</Card.Title>
           </Card>
