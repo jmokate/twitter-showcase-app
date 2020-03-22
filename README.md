@@ -1,20 +1,12 @@
 # Twitter Showcase App (Node, React)
 
-Twitter Showcase App
-
 View it on [Heroku](https://damp-shore-56369.herokuapp.com/)
 
 ![twittershowcase](https://user-images.githubusercontent.com/29006517/77257950-7635c500-6c45-11ea-9eb1-967369428e59.png)
 
 ## Summary
 
-## Installation Insructions
-
-1. Download Repository.
-2. Using the command line, navigate to root directory and run "npm i".
-3. Run "npm start".
-4. In your browser, redirect to localhost where the application is running. (Typically http://localhost:3000/).
-5. Enjoy them tasty Star Wars character stats!
+I am very excited to present this application. The completion of this project was very challenging and taught me a lot about using Node to access APIs and deliver specific information to the browser. This is my first project using a server side framework. I ran into many road blocks building this, but with persistence and the desire for the end result, I was able to overcome them. It improved my skills as a developer tremendously and I look forward to creating more applications using Node to continually improve as a programmer. I am happy to say that I have leveled up in my experience, and I look forward to getting better and better.
 
 ## Author
 
