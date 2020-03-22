@@ -1,4 +1,4 @@
-# Star Wars API Application (React)
+# Twitter Showcase App (Node, React)
 
 Twitter Showcase App
 
