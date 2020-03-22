@@ -29,8 +29,9 @@ class RandomPage extends React.Component {
   };
 
   getRandomTweetFromServer = async user => {
+    const url = `/api/random?screen_name=${user}`;
     await axios
-      .get(`/api/random?screen_name=${user}`)
+      .get(url)
       .then(response => {
         const statusArray = response.data;
         const randomTweet =

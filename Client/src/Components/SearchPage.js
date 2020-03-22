@@ -20,9 +20,10 @@ class SearchTweets extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     const search = this.state.formInput;
+    const url = `/api/search?q=${search}`;
 
     await axios
-      .get(`/api/search?q=${search}`)
+      .get(url)
       .then(response => {
         const searchResults = response.data.statuses;
         this.setState({ returnedTweets: searchResults });

@@ -6,16 +6,14 @@ const axios = require("axios");
 const getToken = require("./getToken");
 require("dotenv").config();
 
-// serve the static files from react app
 app.use(express.static(path.join(__dirname, "Client/build")));
 
-//GETS search results
 app.get("/api/random", async (req, res) => {
   const token = await getToken.getToken();
 
   const user = req.query.screen_name;
 
-  // const token = process.env.SECRET_KEY;
+  const url = `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${user}`;
 
   const config = {
     headers: {
@@ -24,23 +22,21 @@ app.get("/api/random", async (req, res) => {
   };
 
   await axios
-    .get(
-      `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${user}`,
-      config
-    )
+    .get(url, config)
     .then(response => {
       res.send(response.data);
     })
     .catch(error => {
       console.log(error);
-      res.sendStatus(500);
     });
 });
 
-//GETS random tweets from top 5 users.
 app.get("/api/search", async (req, res) => {
   const token = await getToken.getToken();
-  search = req.query.q;
+
+  const search = req.query.q;
+
+  const url = `https://api.twitter.com/1.1/search/tweets.json?q=${search}&result_type=mixed`;
 
   const config = {
     headers: {
@@ -49,17 +45,13 @@ app.get("/api/search", async (req, res) => {
   };
 
   await axios
-    .get(
-      `https://api.twitter.com/1.1/search/tweets.json?q=${search}&result_type=mixed`,
-      config
-    )
+    .get(url, config)
 
     .then(response => {
       res.send(response.data);
     })
     .catch(error => {
       console.log(error);
-      res.sendStatus(500);
     });
 });
 
