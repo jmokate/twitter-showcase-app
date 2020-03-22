@@ -1,7 +1,11 @@
 import React from "react";
 import { Card, CardGroup, Col, Row } from "react-bootstrap";
 import axios from "axios";
-
+import onion from "../ProfileImages/onion.jpg";
+import npr from "../ProfileImages/npr.jpg";
+import bulls from "../ProfileImages/bulls.jpg";
+import norm from "../ProfileImages/norm.jpeg";
+import dog from "../ProfileImages/dog.png";
 import RandomTweet from "./RandomTweet";
 
 class RandomPage extends React.Component {
@@ -93,7 +97,7 @@ class RandomPage extends React.Component {
             name='TheOnion'
             onClick={() => this.handleSelectedUser("TheOnion")}
           >
-            <Card.Img variant='top' src='../ProfileImages/onion.jpg' />
+            <Card.Img variant='top' src={onion} alt='The Onion Logo' />
             <Card.Title align='center'>The Onion</Card.Title>
           </Card>
           <Card
@@ -102,11 +106,7 @@ class RandomPage extends React.Component {
             border='light'
             onClick={() => this.handleSelectedUser("NPR")}
           >
-            <Card.Img
-              variant='top'
-              src='https://pbs.twimg.com/profile_images/1208165423109292032/_oEEIsvx_400x400.jpg'
-              alt='NPR Logo'
-            />
+            <Card.Img variant='top' src={npr} alt='NPR Logo' />
             <Card.Title align='center'>NPR</Card.Title>
           </Card>
           <Card
@@ -115,11 +115,7 @@ class RandomPage extends React.Component {
             border='light'
             onClick={() => this.handleSelectedUser("chicagobulls")}
           >
-            <Card.Img
-              variant='top'
-              src='https://pbs.twimg.com/profile_images/1236410969389137920/k0q41K2t_400x400.jpg'
-              alt='Chicago Bulls Logo'
-            />
+            <Card.Img variant='top' src={bulls} alt='Chicago Bulls Logo' />
             <Card.Title align='center'>Chicago Bulls</Card.Title>
           </Card>
           <Card
@@ -128,11 +124,7 @@ class RandomPage extends React.Component {
             border='light'
             onClick={() => this.handleSelectedUser("normmacdonald")}
           >
-            <Card.Img
-              variant='top'
-              src='https://pbs.twimg.com/profile_images/1281990037/Unknown_400x400.jpeg'
-              alt='Norm Macdonald Logo'
-            />
+            <Card.Img variant='top' src={norm} alt='Norm Macdonald Logo' />
             <Card.Title align='center'>Norm Macdonald</Card.Title>
           </Card>
           <Card
@@ -141,11 +133,7 @@ class RandomPage extends React.Component {
             border='light'
             onClick={() => this.handleSelectedUser("TheCryptoDog")}
           >
-            <Card.Img
-              variant='top'
-              src='https://pbs.twimg.com/profile_images/1212786806325821440/reFtNK23.png'
-              alt='The Crypto Dog Logo'
-            />
+            <Card.Img variant='top' src={dog} alt='The Crypto Dog Logo' />
             <Card.Title align='center'>Crypto Dog</Card.Title>
           </Card>
         </CardGroup>
