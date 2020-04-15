@@ -13,14 +13,16 @@ class RandomPage extends React.Component {
     super(props);
     this.state = {
       displayTweet: false,
-      name: "",
-      userImg: "",
-      userName: "",
-      userHandle: "",
-      datePosted: "",
-      tweetBody: "",
-      retweets: null,
-      likes: null
+      randomTweet: {
+        name: "",
+        userImg: "",
+        userName: "",
+        userHandle: "",
+        datePosted: "",
+        tweetBody: "",
+        retweets: null,
+        likes: null
+      }
     };
   }
 
@@ -34,25 +36,28 @@ class RandomPage extends React.Component {
       .get(url)
       .then(response => {
         const statusArray = response.data;
-        const randomTweet =
+        const selectedTweet =
           statusArray[Math.floor(Math.random() * statusArray.length)];
-        const userImg = randomTweet.user.profile_image_url;
-        const tweetBody = randomTweet.text;
-        const datePosted = randomTweet.created_at;
-        const userName = randomTweet.user.name;
-        const userHandle = randomTweet.user.screen_name;
-        const retweets = randomTweet.retweet_count;
-        const likes = randomTweet.favorite_count;
+        const randomTweet = {
+          userImg: selectedTweet.user.profile_image_url,
+          tweetBody: selectedTweet.text,
+          datePosted: selectedTweet.created_at,
+          userName: selectedTweet.user.name,
+          userHandle: selectedTweet.user.screen_name,
+          retweets: selectedTweet.retweet_count,
+          likes: selectedTweet.favorite_count
+        };
+        // const userImg = randomTweet.user.profile_image_url;
+        // const tweetBody = randomTweet.text;
+        // const datePosted = randomTweet.created_at;
+        // const userName = randomTweet.user.name;
+        // const userHandle = randomTweet.user.screen_name;
+        // const retweets = randomTweet.retweet_count;
+        // const likes = randomTweet.favorite_count;
 
         this.setState({
           displayTweet: true,
-          userImg: userImg,
-          tweetBody: tweetBody,
-          datePosted: datePosted,
-          userName: userName,
-          userHandle: userHandle,
-          retweets: retweets,
-          likes: likes
+          randomTweet: randomTweet
         });
       })
       .catch(error => {
@@ -68,13 +73,7 @@ class RandomPage extends React.Component {
       displayRandomTweet = (
         <RandomTweet
           displayTweet={this.state.displayTweet}
-          userImg={this.state.userImg}
-          userName={this.state.userName}
-          userHandle={this.state.userHandle}
-          datePosted={this.state.datePosted}
-          tweetBody={this.state.tweetBody}
-          retweets={this.state.retweets}
-          likes={this.state.likes}
+          randomTweet={this.state.randomTweet}
         />
       );
     }
