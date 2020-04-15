@@ -5,6 +5,8 @@
 #js files
 server copy.js
 
+.history
+
 # env
 .env
 

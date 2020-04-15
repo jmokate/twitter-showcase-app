@@ -13,9 +13,12 @@ app.get("/api/random", async (req, res) => {
 
   const user = req.query.screen_name;
 
-  const url = `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${user}`;
+  const url = `https://api.twitter.com/1.1/statuses/user_timeline.json`;
 
   const config = {
+    params: {
+      screen_name: user
+    },
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -28,6 +31,7 @@ app.get("/api/random", async (req, res) => {
     })
     .catch(error => {
       console.log(error);
+      res.status(500).send({ error: error });
     });
 });
 
@@ -36,9 +40,13 @@ app.get("/api/search", async (req, res) => {
 
   const search = req.query.q;
 
-  const url = `https://api.twitter.com/1.1/search/tweets.json?q=${search}&result_type=mixed`;
+  const url = `https://api.twitter.com/1.1/search/tweets.json`;
 
   const config = {
+    params: {
+      q: search,
+      result_type: "mixed"
+    },
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -52,6 +60,7 @@ app.get("/api/search", async (req, res) => {
     })
     .catch(error => {
       console.log(error);
+      res.status(500).send({ error: error });
     });
 });
 
