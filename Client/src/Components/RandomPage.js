@@ -35,29 +35,9 @@ class RandomPage extends React.Component {
     await axios
       .get(url)
       .then(response => {
-        const statusArray = response.data;
-        const selectedTweet =
-          statusArray[Math.floor(Math.random() * statusArray.length)];
-        const randomTweet = {
-          userImg: selectedTweet.user.profile_image_url,
-          tweetBody: selectedTweet.text,
-          datePosted: selectedTweet.created_at,
-          userName: selectedTweet.user.name,
-          userHandle: selectedTweet.user.screen_name,
-          retweets: selectedTweet.retweet_count,
-          likes: selectedTweet.favorite_count
-        };
-        // const userImg = randomTweet.user.profile_image_url;
-        // const tweetBody = randomTweet.text;
-        // const datePosted = randomTweet.created_at;
-        // const userName = randomTweet.user.name;
-        // const userHandle = randomTweet.user.screen_name;
-        // const retweets = randomTweet.retweet_count;
-        // const likes = randomTweet.favorite_count;
-
         this.setState({
           displayTweet: true,
-          randomTweet: randomTweet
+          randomTweet: response.data
         });
       })
       .catch(error => {

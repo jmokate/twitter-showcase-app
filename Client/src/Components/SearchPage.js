@@ -25,8 +25,7 @@ class SearchTweets extends React.Component {
     await axios
       .get(url)
       .then(response => {
-        const searchResults = response.data.statuses;
-        this.setState({ returnedTweets: searchResults });
+        this.setState({ returnedTweets: response.data });
       })
       .catch(error => {
         console.log(error);
@@ -44,16 +43,7 @@ class SearchTweets extends React.Component {
 
     if (displayTweet) {
       displaySearchedTweets = returnedTweets.map(tweet => (
-        <SearchTweet
-          key={tweet.id}
-          userImg={tweet.user.profile_image_url}
-          userName={tweet.user.name}
-          userHandle={tweet.user.screen_name}
-          datePosted={tweet.created_at}
-          tweetBody={tweet.text}
-          retweets={tweet.retweet_count}
-          likes={tweet.favorite_count}
-        />
+        <SearchTweet key={tweet.id} tweet={tweet} />
       ));
     }
     return (

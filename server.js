@@ -27,7 +27,18 @@ app.get("/api/random", async (req, res) => {
   await axios
     .get(url, config)
     .then(response => {
-      res.send(response.data);
+      const tweets = response.data;
+      const selectedTweet = tweets[Math.floor(Math.random() * tweets.length)];
+      const randomTweet = {
+        userImg: selectedTweet.user.profile_image_url,
+        tweetBody: selectedTweet.text,
+        datePosted: selectedTweet.created_at,
+        userName: selectedTweet.user.name,
+        userHandle: selectedTweet.user.screen_name,
+        retweets: selectedTweet.retweet_count,
+        likes: selectedTweet.favorite_count
+      };
+      res.send(randomTweet);
     })
     .catch(error => {
       console.log(error);
@@ -56,7 +67,19 @@ app.get("/api/search", async (req, res) => {
     .get(url, config)
 
     .then(response => {
-      res.send(response.data);
+      const tweets = response.data.statuses.map(tweet => {
+        return {
+          id: tweet.id,
+          userImg: tweet.user.profile_image_url,
+          tweetBody: tweet.text,
+          datePosted: tweet.created_at,
+          userName: tweet.user.name,
+          userHandle: tweet.user.screen_name,
+          retweets: tweet.retweet_count,
+          likes: tweet.favorite_count
+        };
+      });
+      res.send(tweets);
     })
     .catch(error => {
       console.log(error);
