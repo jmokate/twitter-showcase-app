@@ -65,7 +65,6 @@ app.get("/api/search", async (req, res) => {
 
   await axios
     .get(url, config)
-
     .then(response => {
       const tweets = response.data.statuses.map(tweet => {
         return {

@@ -13,16 +13,7 @@ class RandomPage extends React.Component {
     super(props);
     this.state = {
       displayTweet: false,
-      randomTweet: {
-        name: "",
-        userImg: "",
-        userName: "",
-        userHandle: "",
-        datePosted: "",
-        tweetBody: "",
-        retweets: null,
-        likes: null
-      }
+      randomTweet: {}
     };
   }
 
