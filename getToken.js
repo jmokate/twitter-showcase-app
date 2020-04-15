@@ -18,11 +18,18 @@ const config = {
   }
 };
 
+let token;
+
 const getToken = async () => {
+  if (token) {
+    return token;
+  }
   return await axios
     .post(url, data, config)
     .then(response => {
-      return response.data.access_token;
+      console.log("made request for token");
+      token = response.data.access_token;
+      return token;
     })
     .catch(error => {
       console.log(error);
